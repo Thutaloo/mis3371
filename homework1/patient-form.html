@@ -1,13 +1,14 @@
+<!doctype html>
+
 <!--
 Program name: patient-form.html
 Author: Thu Nguyen
 Date created: 1/31/2026
 Date last edited: 2/14/2026
 Version: 1.0
-Description: Submission for homework 1 containing the registration form for a medical entity.
+Description: Submission for homework 1 and 2 containing the registration form for a medical entity.
 -->
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -18,7 +19,7 @@ Description: Submission for homework 1 containing the registration form for a me
   </head>
 
   <body>
-    <main class="page">
+    <main class="page page-form">
       <div class="top-brand">
         <img src="./GenericRX.png" alt="Company Logo" />
         <h2 class="title">MEDICAL GROUP</h2>
@@ -31,55 +32,85 @@ Description: Submission for homework 1 containing the registration form for a me
           <p class="subtitle">Please complete the information below.</p>
         </header>
 
-        <form class="form" action="./submitted-form.html" method="get">
-          <header>
-            <h2 class="section-title">Patient Details</h2>
-          </header>
+        <form
+          class="form"
+          action="./submitted-form.html"
+          method="get"
+          id="patient-form"
+        >
+          <table class="form-table">
+            <tr>
+              <th colspan="4" class="section-title-cell">Patient Details</th>
+            </tr>
 
-          <div class="grid">
-            <div class="field">
-              <label for="first_name">First Name<span class="required">*</span></label>
-              <input
-                id="first_name"
-                name="first_name"
-                type="text"
-                placeholder="Jane"
-                maxlength="30"
-                required
-              />
-            </div>
+            <tr>
+              <td>
+                <label for="first_name"
+                  >First Name<span class="required">*</span></label
+                >
+              </td>
+              <td>
+                <input
+                  id="first_name"
+                  name="first_name"
+                  type="text"
+                  placeholder="Jane"
+                  maxlength="30"
+                  required
+                />
+              </td>
 
-            <div class="field">
-              <label for="middle_initial">Middle Initial</label>
-              <input
-                id="middle_initial"
-                name="middle_initial"
-                type="text"
-                placeholder="A"
-                maxlength="1"
-              />
-            </div>
+              <td><label for="middle_initial">Middle Initial</label></td>
+              <td>
+                <input
+                  id="middle_initial"
+                  name="middle_initial"
+                  type="text"
+                  placeholder="A"
+                  maxlength="1"
+                />
+              </td>
+            </tr>
 
-            <div class="field field--full">
-              <label for="last_name">Last Name<span class="required">*</span></label>
-              <input
-                id="last_name"
-                name="last_name"
-                type="text"
-                placeholder="Doe"
-                maxlength="30"
-                required
-              />
-            </div>
+            <tr>
+              <td>
+                <label for="last_name"
+                  >Last Name<span class="required">*</span></label
+                >
+              </td>
+              <td colspan="3">
+                <input
+                  id="last_name"
+                  name="last_name"
+                  type="text"
+                  placeholder="Doe"
+                  maxlength="30"
+                  required
+                />
+              </td>
+            </tr>
 
-            <div class="field-row">
-              <div class="field">
-                <label for="date_of_birth">Date of birth<span class="required">*</span></label>
-                <input id="date_of_birth" name="date_of_birth" type="date" required />
-              </div>
+            <tr>
+              <td>
+                <label for="date_of_birth"
+                  >Date of birth<span class="required">*</span></label
+                >
+              </td>
+              <td>
+                <input
+                  id="date_of_birth"
+                  name="date_of_birth"
+                  type="date"
+                  required
+                />
+              </td>
 
-              <div class="field">
-                <label for="ssn">Social Security Number<span class="required">*</span></label>
+              <td>
+                <label for="ssn"
+                  >Social Security Number<span class="required">*</span></label
+                >
+              </td>
+              <td>
                 <input
                   id="ssn"
                   name="ssn"
@@ -88,66 +119,88 @@ Description: Submission for homework 1 containing the registration form for a me
                   pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}"
                   required
                 />
-              </div>
-            </div>
+              </td>
+            </tr>
 
-            <div class="field">
-              <label for="gender">Gender<span class="required">*</span></label>
-              <select id="gender" name="gender" required>
-                <option value="" selected disabled>Select an option</option>
-                <option value="Female">Female</option>
-                <option value="Male">Male</option>
-                <option value="Non-binary">Non-binary</option>
-                <option value="Prefer not to say">Prefer not to say</option>
-              </select>
-            </div>
+            <tr>
+              <td>
+                <label for="gender"
+                  >Gender<span class="required">*</span></label
+                >
+              </td>
+              <td>
+                <select id="gender" name="gender" required>
+                  <option value="" selected disabled>Select an option</option>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Non-binary">Non-binary</option>
+                  <option value="Prefer not to say">Prefer not to say</option>
+                </select>
+              </td>
 
-            <div class="field">
-              <label for="email">Email<span class="required">*</span></label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="you@example.com"
-                required
-              />
-            </div>
+              <td>
+                <label for="email">Email<span class="required">*</span></label>
+              </td>
+              <td>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </td>
+            </tr>
 
-            <div class="field field--full">
-              <label for="phone">Phone<span class="required">*</span></label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                placeholder="(555) 555-5555"
-                required
-              />
-            </div>
+            <tr>
+              <td>
+                <label for="phone">Phone<span class="required">*</span></label>
+              </td>
+              <td colspan="3">
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="(555) 555-5555"
+                  required
+                />
+              </td>
+            </tr>
 
-            <div class="field field--full">
-              <label for="address_line_1">Address 1<span class="required">*</span></label>
-              <input
-                id="address_line_1"
-                name="address_line_1"
-                type="text"
-                placeholder="123 Main St"
-                required
-              />
-            </div>
+            <tr>
+              <td>
+                <label for="address_line_1"
+                  >Address 1<span class="required">*</span></label
+                >
+              </td>
+              <td colspan="3">
+                <input
+                  id="address_line_1"
+                  name="address_line_1"
+                  type="text"
+                  placeholder="123 Main St"
+                  required
+                />
+              </td>
+            </tr>
 
-            <div class="field field--full">
-              <label for="address_line_2">Address 2</label>
-              <input
-                id="address_line_2"
-                name="address_line_2"
-                type="text"
-                placeholder="Apt, Suite, Unit (optional)"
-              />
-            </div>
+            <tr>
+              <td><label for="address_line_2">Address 2</label></td>
+              <td colspan="3">
+                <input
+                  id="address_line_2"
+                  name="address_line_2"
+                  type="text"
+                  placeholder="Apt, Suite, Unit (optional)"
+                />
+              </td>
+            </tr>
 
-            <div class="field-row">
-              <div class="field">
+            <tr>
+              <td>
                 <label for="city">City<span class="required">*</span></label>
+              </td>
+              <td>
                 <input
                   id="city"
                   name="city"
@@ -156,30 +209,75 @@ Description: Submission for homework 1 containing the registration form for a me
                   maxlength="30"
                   required
                 />
-              </div>
+              </td>
 
-              <div class="field">
+              <td>
                 <label for="state">State<span class="required">*</span></label>
+              </td>
+              <td>
                 <select id="state" name="state" required>
                   <option value="" selected disabled>Select</option>
-                  <option value="AL">AL</option><option value="AK">AK</option><option value="AZ">AZ</option><option value="AR">AR</option>
-                  <option value="CA">CA</option><option value="CO">CO</option><option value="CT">CT</option><option value="DE">DE</option>
-                  <option value="FL">FL</option><option value="GA">GA</option><option value="HI">HI</option><option value="ID">ID</option>
-                  <option value="IL">IL</option><option value="IN">IN</option><option value="IA">IA</option><option value="KS">KS</option>
-                  <option value="KY">KY</option><option value="LA">LA</option><option value="ME">ME</option><option value="MD">MD</option>
-                  <option value="MA">MA</option><option value="MI">MI</option><option value="MN">MN</option><option value="MS">MS</option>
-                  <option value="MO">MO</option><option value="MT">MT</option><option value="NE">NE</option><option value="NV">NV</option>
-                  <option value="NH">NH</option><option value="NJ">NJ</option><option value="NM">NM</option><option value="NY">NY</option>
-                  <option value="NC">NC</option><option value="ND">ND</option><option value="OH">OH</option><option value="OK">OK</option>
-                  <option value="OR">OR</option><option value="PA">PA</option><option value="RI">RI</option><option value="SC">SC</option>
-                  <option value="SD">SD</option><option value="TN">TN</option><option value="TX">TX</option><option value="UT">UT</option>
-                  <option value="VT">VT</option><option value="VA">VA</option><option value="WA">WA</option><option value="WV">WV</option>
-                  <option value="WI">WI</option><option value="WY">WY</option>
+                  <option value="AL">AL</option>
+                  <option value="AK">AK</option>
+                  <option value="AZ">AZ</option>
+                  <option value="AR">AR</option>
+                  <option value="CA">CA</option>
+                  <option value="CO">CO</option>
+                  <option value="CT">CT</option>
+                  <option value="DE">DE</option>
+                  <option value="FL">FL</option>
+                  <option value="GA">GA</option>
+                  <option value="HI">HI</option>
+                  <option value="ID">ID</option>
+                  <option value="IL">IL</option>
+                  <option value="IN">IN</option>
+                  <option value="IA">IA</option>
+                  <option value="KS">KS</option>
+                  <option value="KY">KY</option>
+                  <option value="LA">LA</option>
+                  <option value="ME">ME</option>
+                  <option value="MD">MD</option>
+                  <option value="MA">MA</option>
+                  <option value="MI">MI</option>
+                  <option value="MN">MN</option>
+                  <option value="MS">MS</option>
+                  <option value="MO">MO</option>
+                  <option value="MT">MT</option>
+                  <option value="NE">NE</option>
+                  <option value="NV">NV</option>
+                  <option value="NH">NH</option>
+                  <option value="NJ">NJ</option>
+                  <option value="NM">NM</option>
+                  <option value="NY">NY</option>
+                  <option value="NC">NC</option>
+                  <option value="ND">ND</option>
+                  <option value="OH">OH</option>
+                  <option value="OK">OK</option>
+                  <option value="OR">OR</option>
+                  <option value="PA">PA</option>
+                  <option value="RI">RI</option>
+                  <option value="SC">SC</option>
+                  <option value="SD">SD</option>
+                  <option value="TN">TN</option>
+                  <option value="TX">TX</option>
+                  <option value="UT">UT</option>
+                  <option value="VT">VT</option>
+                  <option value="VA">VA</option>
+                  <option value="WA">WA</option>
+                  <option value="WV">WV</option>
+                  <option value="WI">WI</option>
+                  <option value="WY">WY</option>
                 </select>
-              </div>
+              </td>
+            </tr>
 
-              <div class="field">
-                <label for="postal_code">Post/Zip code<span class="required">*</span></label>
+            <tr>
+              <td>
+                <label for="postal_code"
+                  >Post/Zip code<span class="required">*</span></label
+                >
+              </td>
+              <td colspan="3">
                 <input
                   id="postal_code"
                   name="postal_code"
@@ -188,141 +286,211 @@ Description: Submission for homework 1 containing the registration form for a me
                   maxlength="10"
                   required
                 />
-              </div>
-            </div>
+              </td>
+            </tr>
+          </table>
 
-            <header class="section-divider field--full">
-              <h2 class="section-title">Medical History</h2>
-            </header>
+          <table class="form-table">
+            <tr>
+              <th colspan="2" class="section-title-cell">Medical History</th>
+            </tr>
 
-            <fieldset class="field field--full">
-              <legend>Do you smoke or use tobacco products?<span class="required">*</span></legend>
+            <tr>
+              <td>
+                <label>
+                  Do you smoke or use tobacco products?<span class="required"
+                    >*</span
+                  >
+                </label>
+              </td>
+              <td>
+                <label class="radio-option">
+                  <input type="radio" name="tobacco_use" value="Yes" required />
+                  <span>Yes</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tobacco_use" value="No" />
+                  <span>No</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="tobacco_use" value="Former" />
+                  <span>Former Smoker</span>
+                </label>
+              </td>
+            </tr>
 
-              <label class="radio-option">
-                <input type="radio" name="tobacco_use" value="Yes" required />
-                <span>Yes</span>
-              </label>
+            <tr>
+              <td>
+                <label>
+                  Do you consume alcohol?<span class="required">*</span>
+                </label>
+              </td>
+              <td>
+                <label class="radio-option">
+                  <input type="radio" name="alcohol_use" value="Yes" required />
+                  <span>Yes</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="alcohol_use" value="No" />
+                  <span>No</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="alcohol_use" value="Occasionally" />
+                  <span>Occasionally</span>
+                </label>
+              </td>
+            </tr>
 
-              <label class="radio-option">
-                <input type="radio" name="tobacco_use" value="No" />
-                <span>No</span>
-              </label>
+            <tr>
+              <td>
+                <label>
+                  Are you currently taking any prescription medications?<span
+                    class="required"
+                    >*</span
+                  >
+                </label>
+              </td>
+              <td>
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="prescription_medications"
+                    value="Yes"
+                    required
+                  />
+                  <span>Yes</span>
+                </label>
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="prescription_medications"
+                    value="No"
+                  />
+                  <span>No</span>
+                </label>
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="prescription_medications"
+                    value="Prefer not to say"
+                  />
+                  <span>Prefer not to say</span>
+                </label>
+              </td>
+            </tr>
 
-              <label class="radio-option">
-                <input type="radio" name="tobacco_use" value="Former" />
-                <span>Former Smoker</span>
-              </label>
-            </fieldset>
+            <tr>
+              <td>
+                <label>
+                  Have you had surgery in the past 5 years?<span
+                    class="required"
+                    >*</span
+                  >
+                </label>
+              </td>
+              <td>
+                <label class="radio-option">
+                  <input type="radio" name="surgery" value="Yes" required />
+                  <span>Yes</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="surgery" value="No" />
+                  <span>No</span>
+                </label>
+              </td>
+            </tr>
 
-            <fieldset class="field field--full">
-              <legend>Do you consume alcohol?<span class="required">*</span></legend>
+            <tr>
+              <td>
+                <label for="pain_level">
+                  Current pain level (0–10)<span class="required">*</span>
+                </label>
+              </td>
+              <td>
+                <input
+                  id="pain_level"
+                  name="pain_level"
+                  type="range"
+                  min="0"
+                  max="10"
+                  value="0"
+                  required
+                />
+                <div class="range-readout">
+                  Selected: <strong id="pain_level_value">0</strong>
+                </div>
+              </td>
+            </tr>
+          </table>
 
-              <label class="radio-option">
-                <input type="radio" name="alcohol_use" value="Yes" required />
-                <span>Yes</span>
-              </label>
+          <table class="form-table">
+            <tr>
+              <th colspan="4" class="section-title-cell">Account Signup</th>
+            </tr>
 
-              <label class="radio-option">
-                <input type="radio" name="alcohol_use" value="No" />
-                <span>No</span>
-              </label>
+            <tr>
+              <td>
+                <label for="username"
+                  >Username<span class="required">*</span></label
+                >
+              </td>
+              <td colspan="3">
+                <input
+                  id="username"
+                  name="username"
+                  type="text"
+                  placeholder="patient123"
+                  maxlength="20"
+                  required
+                />
+              </td>
+            </tr>
 
-              <label class="radio-option">
-                <input type="radio" name="alcohol_use" value="Occasionally" />
-                <span>Occasionally</span>
-              </label>
-            </fieldset>
+            <tr>
+              <td>
+                <label for="password"
+                  >Password<span class="required">*</span></label
+                >
+              </td>
+              <td>
+                <input id="password" name="password" type="password" required />
+              </td>
 
-            <fieldset class="field field--full">
-              <legend>Are you currently taking any prescription medications?<span class="required">*</span></legend>
+              <td>
+                <label for="confirm_password"
+                  >Confirm Password<span class="required">*</span></label
+                >
+              </td>
+              <td>
+                <input
+                  id="confirm_password"
+                  name="confirm_password"
+                  type="password"
+                  required
+                />
+              </td>
+            </tr>
 
-              <label class="radio-option">
-                <input type="radio" name="prescription_medications" value="Yes" required />
-                <span>Yes</span>
-              </label>
+            <tr>
+              <td colspan="4">
+                <label class="check" for="consent">
+                  <input type="checkbox" id="consent" name="consent" required />
+                  <span>
+                    I agree to the
+                    <a href="./terms.html" class="consent-link"
+                      >terms, conditions, and policies</a
+                    >.
+                  </span>
+                </label>
+              </td>
+            </tr>
 
-              <label class="radio-option">
-                <input type="radio" name="prescription_medications" value="No" />
-                <span>No</span>
-              </label>
-
-              <label class="radio-option">
-                <input type="radio" name="prescription_medications" value="Prefer not to say" />
-                <span>Prefer not to say</span>
-              </label>
-            </fieldset>
-
-            <fieldset class="field field--full">
-              <legend>Have you had surgery in the past 5 years?<span class="required">*</span></legend>
-
-              <label class="radio-option">
-                <input type="radio" name="surgery" value="Yes" required />
-                <span>Yes</span>
-              </label>
-
-              <label class="radio-option">
-                <input type="radio" name="surgery" value="No" />
-                <span>No</span>
-              </label>
-            </fieldset>
-
-            <div class="field field--full">
-              <label for="pain_level">Current pain level (0–10)<span class="required">*</span></label>
-              <input
-                id="pain_level"
-                name="pain_level"
-                type="range"
-                min="0"
-                max="10"
-                value="0"
-                required
-                oninput="document.getElementById('pain_level_value').textContent = this.value"
-              />
-              <div class="range-readout">
-                Selected: <strong id="pain_level_value">0</strong>
-              </div>
-            </div>
-
-            <header class="section-divider field--full">
-              <h2 class="section-title">Account Signup</h2>
-            </header>
-
-            <div class="field field--full">
-              <label for="username">Username<span class="required">*</span></label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                placeholder="patient123"
-                maxlength="20"
-                required
-              />
-            </div>
-
-            <div class="field">
-              <label for="password">Password<span class="required">*</span></label>
-              <input id="password" name="password" type="password" required />
-            </div>
-
-            <div class="field">
-              <label for="confirm_password">Confirm Password<span class="required">*</span></label>
-              <input id="confirm_password" name="confirm_password" type="password" required />
-            </div>
-
-            <div class="field field--full">
-              <label class="check" for="consent">
-                <input type="checkbox" id="consent" name="consent" required />
-                <span>
-                  I agree to the
-                  <a href="./terms.html" class="consent-link">terms, conditions, and policies</a>.
-                </span>
-              </label>
-            </div>
-
-            <div class="actions field--full">
-              <button class="btn" type="submit">Submit</button>
-            </div>
-          </div>
+            <tr>
+              <td colspan="4" class="actions-cell">
+                <button class="btn" type="submit">Submit</button>
+              </td>
+            </tr>
+          </table>
         </form>
       </section>
 
@@ -335,19 +503,48 @@ Description: Submission for homework 1 containing the registration form for a me
       <img src="./profile.png" alt="Back to Assignments" />
     </a>
 
-    <button type="button" class="fab-reset" id="reset-form" aria-label="Clear form">
+    <button
+      type="button"
+      class="fab-reset"
+      id="reset-form"
+      aria-label="Clear form"
+    >
       Clear Form
     </button>
+    <div id="confirm-modal" class="modal-overlay" hidden>
+      <div
+        class="modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <h2 id="modal-title">Please Confirm Your Information</h2>
 
-    <script>
-      document.getElementById("y").textContent = new Date().getFullYear();
-      document.getElementById("current-date").textContent = new Date().toString();
+        <div id="modal-summary" class="modal-summary"></div>
 
-      document.getElementById("reset-form").addEventListener("click", function () {
-        const form = document.querySelector("form");
-        form.reset();
-        document.getElementById("pain_level_value").textContent = "0";
-      });
-    </script>
+        <p class="modal-note">
+          If everything looks correct, click Confirm and Submit. Otherwise,
+          click Edit Information.
+        </p>
+
+        <div class="modal-actions">
+          <button
+            type="button"
+            class="modal-btn modal-btn-secondary"
+            id="modal-cancel"
+          >
+            Edit Information
+          </button>
+          <button
+            type="button"
+            class="modal-btn modal-btn-primary"
+            id="modal-confirm"
+          >
+            Confirm and Submit
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="homework2.js"></script>
   </body>
 </html>

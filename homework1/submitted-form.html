@@ -1,35 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Terms and Conditions</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Form Submitted</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/x-icon" href="title-icon.png" />
+  </head>
 
-<style>
-    body {
-    background-image: url('background.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-    }
-</style> 
+  <body>
+    <main class="page page-simple">
+      <section class="info-card" aria-labelledby="submitted-title">
+        <header class="info-card__header">
+          <h1 id="submitted-title" class="title">Thank You</h1>
+          <p class="subtitle">Your patient intake form has been submitted.</p>
+        </header>
 
-<body style="text-align: center; color: #931e35ff;">
+        <div class="info-card__body">
+          <p class="info-copy">
+            Thank you for taking the time to complete the form.
+          </p>
 
-  <h1>Thank You</h1>
+          <div class="info-media">
+            <img src="./flower-cat.gif" alt="Thank you cat" />
+          </div>
 
-  <div class="content">
-    <p>
-      For all your efforts filling out the form:
-    </p>
+          <p class="info-copy">We appreciate your effort. Have a good one.</p>
 
-    <img src="./flower-cat.gif" alt="thanks"
-        style="width:300px; margin:20px auto; display:block;">
-
-    <p>
-        Have a good one!
-    </p>
-  </div>
-
-</body>
+          <div class="info-actions">
+            <a href="./patient-form.html" class="info-btn">Fill out another form</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
