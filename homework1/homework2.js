@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalSummary = document.getElementById("modal-summary");
   const modalCancel = document.getElementById("modal-cancel");
   const modalConfirm = document.getElementById("modal-confirm");
+  const submitButton = document.getElementById("submit-btn");
 
   const firstName = document.getElementById("first_name");
   const middleInitial = document.getElementById("middle_initial");
@@ -23,6 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const username = document.getElementById("username");
   const password = document.getElementById("password");
   const confirmPassword = document.getElementById("confirm_password");
+  const messageBox = document.getElementById("message");
+  const letter = document.getElementById("letter");
+  const capital = document.getElementById("capital");
+  const number = document.getElementById("number");
+  const lengthRule = document.getElementById("length");
+  const match = document.getElementById("match");
   const consent = document.getElementById("consent");
 
   const painSlider = document.getElementById("pain_level");
@@ -122,90 +129,94 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (resetButton && form) {
-    resetButton.addEventListener("click", function () {
-      const confirmReset = confirm("Are you sure you want to clear the form?");
-      if (!confirmReset) {
-        return;
-      }
-
-      form.reset();
-      clearAllErrors();
-
-      if (painSlider && painValue) {
-        painValue.textContent = painSlider.value;
-      }
-    });
-  }
-
-  function validateFirstName() {
+  function validateFirstName(showMessages = true) {
     if (!firstName) return true;
 
     const value = firstName.value.trim();
     const regex = /^[A-Za-z'-]{1,30}$/;
 
     if (value === "") {
-      showError(firstName, "First name is required.");
+      if (showMessages) {
+        showError(firstName, "First name is required.");
+      }
       return false;
     }
 
     if (!regex.test(value)) {
-      showError(firstName, "Letters, apostrophes, and dashes only.");
+      if (showMessages) {
+        showError(firstName, "Letters, apostrophes, and dashes only.");
+      }
       return false;
     }
 
-    clearError(firstName);
+    if (showMessages) {
+      clearError(firstName);
+    }
     return true;
   }
 
-  function validateMiddleInitial() {
+  function validateMiddleInitial(showMessages = true) {
     if (!middleInitial) return true;
 
     const value = middleInitial.value.trim();
     const regex = /^[A-Za-z]$/;
 
     if (value === "") {
-      clearError(middleInitial);
+      if (showMessages) {
+        clearError(middleInitial);
+      }
       return true;
     }
 
     if (!regex.test(value)) {
-      showError(middleInitial, "One letter only.");
+      if (showMessages) {
+        showError(middleInitial, "One letter only.");
+      }
       return false;
     }
 
-    clearError(middleInitial);
+    if (showMessages) {
+      clearError(middleInitial);
+    }
     return true;
   }
 
-  function validateLastName() {
+  function validateLastName(showMessages = true) {
     if (!lastName) return true;
 
     const value = lastName.value.trim();
     const regex = /^[A-Za-z2-5'-]{1,30}$/;
 
     if (value === "") {
-      showError(lastName, "Last name is required.");
+      if (showMessages) {
+        showError(lastName, "Last name is required.");
+      }
       return false;
     }
 
     if (!regex.test(value)) {
-      showError(
-        lastName,
-        "Only letters, apostrophes, dashes, and numbers 2 through 5 are allowed.",
-      );
+      if (showMessages) {
+        showError(
+          lastName,
+          "Only letters, apostrophes, dashes, and numbers 2 through 5 are allowed.",
+        );
+      }
       return false;
     }
 
-    clearError(lastName);
+    if (showMessages) {
+      clearError(lastName);
+    }
     return true;
   }
 
-  function validateDOB() {
+  function validateDOB(showMessages = true) {
     if (!dateOfBirth) return true;
 
     if (dateOfBirth.value === "") {
-      showError(dateOfBirth, "Date of birth is required.");
+      if (showMessages) {
+        showError(dateOfBirth, "Date of birth is required.");
+      }
       return false;
     }
 
@@ -215,39 +226,51 @@ document.addEventListener("DOMContentLoaded", function () {
     minDate.setFullYear(today.getFullYear() - 120);
 
     if (selected > today) {
-      showError(dateOfBirth, "Date of birth cannot be in the future.");
+      if (showMessages) {
+        showError(dateOfBirth, "Date of birth cannot be in the future.");
+      }
       return false;
     }
 
     if (selected < minDate) {
-      showError(
-        dateOfBirth,
-        "Date of birth cannot be more than 120 years ago.",
-      );
+      if (showMessages) {
+        showError(
+          dateOfBirth,
+          "Date of birth cannot be more than 120 years ago.",
+        );
+      }
       return false;
     }
 
-    clearError(dateOfBirth);
+    if (showMessages) {
+      clearError(dateOfBirth);
+    }
     return true;
   }
 
-  function validateEmail() {
+  function validateEmail(showMessages = true) {
     if (!emailInput) return true;
 
     const value = emailInput.value.trim();
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (value === "") {
-      showError(emailInput, "Email is required.");
+      if (showMessages) {
+        showError(emailInput, "Email is required.");
+      }
       return false;
     }
 
     if (!regex.test(value)) {
-      showError(emailInput, "Enter a valid email like name@domain.com.");
+      if (showMessages) {
+        showError(emailInput, "Enter a valid email like name@domain.com.");
+      }
       return false;
     }
 
-    clearError(emailInput);
+    if (showMessages) {
+      clearError(emailInput);
+    }
     return true;
   }
 
@@ -266,23 +289,29 @@ document.addEventListener("DOMContentLoaded", function () {
     phoneInput.value = formatted;
   }
 
-  function validatePhone() {
+  function validatePhone(showMessages = true) {
     if (!phoneInput) return true;
 
     const value = phoneInput.value.trim();
     const regex = /^\d{3}-\d{3}-\d{4}$/;
 
     if (value === "") {
-      showError(phoneInput, "Phone number is required.");
+      if (showMessages) {
+        showError(phoneInput, "Phone number is required.");
+      }
       return false;
     }
 
     if (!regex.test(value)) {
-      showError(phoneInput, "Phone number must be in the format 000-000-0000.");
+      if (showMessages) {
+        showError(phoneInput, "Phone number must be in the format 000-000-0000.");
+      }
       return false;
     }
 
-    clearError(phoneInput);
+    if (showMessages) {
+      clearError(phoneInput);
+    }
     return true;
   }
 
@@ -301,81 +330,105 @@ document.addEventListener("DOMContentLoaded", function () {
     ssnInput.value = formatted;
   }
 
-  function validateSSN() {
+  function validateSSN(showMessages = true) {
     if (!ssnInput) return true;
 
     const value = ssnInput.value.trim();
     const regex = /^\d{3}-\d{2}-\d{4}$/;
 
     if (value === "") {
-      showError(ssnInput, "Social Security Number is required.");
+      if (showMessages) {
+        showError(ssnInput, "Social Security Number is required.");
+      }
       return false;
     }
 
     if (!regex.test(value)) {
-      showError(
-        ssnInput,
-        "Social Security Number must be in the format 123-45-6789.",
-      );
+      if (showMessages) {
+        showError(
+          ssnInput,
+          "Social Security Number must be in the format 123-45-6789.",
+        );
+      }
       return false;
     }
 
-    clearError(ssnInput);
+    if (showMessages) {
+      clearError(ssnInput);
+    }
     return true;
   }
 
-  function validateAddress(field, required) {
+  function validateAddress(field, required, showMessages = true) {
     if (!field) return true;
 
     const value = field.value.trim();
 
     if (value === "") {
       if (required) {
-        showError(field, "This field is required.");
+        if (showMessages) {
+          showError(field, "This field is required.");
+        }
         return false;
       }
 
-      clearError(field);
+      if (showMessages) {
+        clearError(field);
+      }
       return true;
     }
 
     if (value.length < 2 || value.length > 30) {
-      showError(field, "This field must be between 2 and 30 characters.");
+      if (showMessages) {
+        showError(field, "This field must be between 2 and 30 characters.");
+      }
       return false;
     }
 
-    clearError(field);
+    if (showMessages) {
+      clearError(field);
+    }
     return true;
   }
 
-  function validateCity() {
+  function validateCity(showMessages = true) {
     if (!cityInput) return true;
 
     const value = cityInput.value.trim();
 
     if (value === "") {
-      showError(cityInput, "City is required.");
+      if (showMessages) {
+        showError(cityInput, "City is required.");
+      }
       return false;
     }
 
     if (value.length < 2 || value.length > 30) {
-      showError(cityInput, "City must be between 2 and 30 characters.");
+      if (showMessages) {
+        showError(cityInput, "City must be between 2 and 30 characters.");
+      }
       return false;
     }
 
-    clearError(cityInput);
+    if (showMessages) {
+      clearError(cityInput);
+    }
     return true;
   }
 
-  function validateState() {
+  function validateState(showMessages = true) {
     if (!stateInput) return true;
 
     if (stateInput.value === "") {
-      showError(stateInput, "Please select a state.");
+      if (showMessages) {
+        showError(stateInput, "Please select a state.");
+      }
       return false;
     }
 
-    clearError(stateInput);
+    if (showMessages) {
+      clearError(stateInput);
+    }
     return true;
   }
 
@@ -391,23 +444,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function validateZip() {
+  function validateZip(showMessages = true) {
     if (!zipInput) return true;
 
     const value = zipInput.value.trim();
     const regex = /^\d{5}(-\d{4})?$/;
 
     if (value === "") {
-      showError(zipInput, "Post/Zip code is required.");
+      if (showMessages) {
+        showError(zipInput, "Post/Zip code is required.");
+      }
       return false;
     }
 
     if (!regex.test(value)) {
-      showError(zipInput, "Post/Zip code must be 5 digits or ZIP+4 format.");
+      if (showMessages) {
+        showError(zipInput, "Post/Zip code must be 5 digits or ZIP+4 format.");
+      }
       return false;
     }
 
-    clearError(zipInput);
+    if (showMessages) {
+      clearError(zipInput);
+    }
     return true;
   }
 
@@ -416,7 +475,7 @@ document.addEventListener("DOMContentLoaded", function () {
     username.value = username.value.toLowerCase();
   }
 
-  function validateUsername() {
+  function validateUsername(showMessages = true) {
     if (!username) return true;
 
     normalizeUsername();
@@ -425,19 +484,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const regex = /^[a-z][a-z0-9_-]{4,19}$/;
 
     if (value === "") {
-      showError(username, "Username is required.");
+      if (showMessages) {
+        showError(username, "Username is required.");
+      }
       return false;
     }
 
     if (!regex.test(value)) {
-      showError(
-        username,
-        "Username must start with a letter and use only letters, numbers, underscores, or dashes.",
-      );
+      if (showMessages) {
+        showError(
+          username,
+          "Username must start with a letter and use only letters, numbers, underscores, or dashes.",
+        );
+      }
       return false;
     }
 
-    clearError(username);
+    if (showMessages) {
+      clearError(username);
+    }
     return true;
   }
 
@@ -446,6 +511,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!password || !confirmPassword || !username || !firstName || !lastName) {
       return true;
+    }
+
+    password.classList.remove("invalid-field");
+    confirmPassword.classList.remove("invalid-field");
+
+    const passwordHost = password.parentElement;
+    const confirmPasswordHost = confirmPassword.parentElement;
+
+    if (passwordHost) {
+      const passwordError = passwordHost.querySelector(".field-error");
+      if (passwordError) {
+        passwordError.textContent = "";
+      }
+    }
+
+    if (confirmPasswordHost) {
+      const confirmPasswordError = confirmPasswordHost.querySelector(".field-error");
+      if (confirmPasswordError) {
+        confirmPasswordError.textContent = "";
+      }
     }
 
     const pwd = password.value;
@@ -458,58 +543,96 @@ document.addEventListener("DOMContentLoaded", function () {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#%^&*()\-_=+\\/><.,`~])(?!.*["]).{8,30}$/;
 
     if (pwd === "") {
-      showError(password, "Password is required.");
       isValid = false;
     } else if (!regex.test(pwd)) {
-      showError(
-        password,
-        "Password must be 8 to 30 characters and include uppercase, lowercase, number, and special character. Double quotes are not allowed.",
-      );
       isValid = false;
     } else if (user !== "" && pwd.toLowerCase().includes(user)) {
-      showError(password, "Password cannot contain your username.");
       isValid = false;
     } else if (first !== "" && pwd.toLowerCase().includes(first)) {
-      showError(password, "Password cannot contain your first name.");
       isValid = false;
     } else if (last !== "" && pwd.toLowerCase().includes(last)) {
-      showError(password, "Password cannot contain your last name.");
       isValid = false;
-    } else {
-      clearError(password);
     }
 
     if (confirmPwd === "") {
-      showError(confirmPassword, "Please confirm your password.");
       isValid = false;
     } else if (pwd !== confirmPwd) {
-      showError(confirmPassword, "Passwords do not match.");
       isValid = false;
-    } else {
-      clearError(confirmPassword);
     }
 
     return isValid;
   }
 
-  function validateConsent() {
+  function setRuleState(element, isValid) {
+    if (!element) return;
+
+    if (isValid) {
+      element.classList.add("valid");
+      element.classList.remove("invalid");
+    } else {
+      element.classList.add("invalid");
+      element.classList.remove("valid");
+    }
+  }
+
+  function updatePasswordChecklist() {
+    if (!password || !confirmPassword) return;
+
+    const value = password.value;
+
+    setRuleState(letter, /[a-z]/.test(value));
+    setRuleState(capital, /[A-Z]/.test(value));
+    setRuleState(number, /[0-9]/.test(value));
+    setRuleState(lengthRule, value.length >= 8);
+
+    setRuleState(
+      match,
+      value !== "" &&
+        confirmPassword.value !== "" &&
+        value === confirmPassword.value,
+    );
+  }
+
+  function validateConsent(showMessages = true) {
     if (!consent) return true;
 
     if (!consent.checked) {
-      showError(
-        consent,
-        "You must agree to the terms, conditions, and policies.",
-      );
+      if (showMessages) {
+        showError(
+          consent,
+          "You must agree to the terms, conditions, and policies.",
+        );
+      }
       return false;
     }
 
-    clearError(consent);
+    if (showMessages) {
+      clearError(consent);
+    }
     return true;
   }
 
-  function getSelectedRadioValue(name) {
-    const selected = document.querySelector(`input[name="${name}"]:checked`);
-    return selected ? selected.value : "Not provided";
+  function checkFormValidity() {
+    if (!submitButton) return;
+
+    const isValid =
+      validateFirstName(false) &&
+      validateMiddleInitial(false) &&
+      validateLastName(false) &&
+      validateDOB(false) &&
+      validateEmail(false) &&
+      validatePhone(false) &&
+      validateSSN(false) &&
+      validateAddress(address1, true, false) &&
+      validateAddress(address2, false, false) &&
+      validateCity(false) &&
+      validateState(false) &&
+      validateZip(false) &&
+      validateUsername(false) &&
+      validatePassword() &&
+      validateConsent(false);
+
+    submitButton.disabled = !isValid;
   }
 
   function getSelectedRadioValue(name) {
@@ -556,6 +679,25 @@ Username: ${username?.value.trim() || "N/A"}
   function closeModal() {
     if (!confirmModal) return;
     confirmModal.hidden = true;
+  }
+
+  if (resetButton && form) {
+    resetButton.addEventListener("click", function () {
+      const confirmReset = confirm("Are you sure you want to clear the form?");
+      if (!confirmReset) {
+        return;
+      }
+
+      form.reset();
+      clearAllErrors();
+
+      if (painSlider && painValue) {
+        painValue.textContent = painSlider.value;
+      }
+
+      updatePasswordChecklist();
+      checkFormValidity();
+    });
   }
 
   if (firstName) {
@@ -640,26 +782,55 @@ Username: ${username?.value.trim() || "N/A"}
       normalizeUsername();
       validateUsername();
       validatePassword();
+      updatePasswordChecklist();
     });
     username.addEventListener("blur", function () {
       validateUsername();
       validatePassword();
+      updatePasswordChecklist();
     });
   }
 
   if (password) {
-    password.addEventListener("input", validatePassword);
-    password.addEventListener("blur", validatePassword);
+    password.addEventListener("input", function () {
+      validatePassword();
+      updatePasswordChecklist();
+    });
+    password.addEventListener("blur", function () {
+      validatePassword();
+      updatePasswordChecklist();
+    });
   }
 
   if (confirmPassword) {
-    confirmPassword.addEventListener("input", validatePassword);
-    confirmPassword.addEventListener("blur", validatePassword);
+    confirmPassword.addEventListener("input", function () {
+      validatePassword();
+      updatePasswordChecklist();
+    });
+    confirmPassword.addEventListener("blur", function () {
+      validatePassword();
+      updatePasswordChecklist();
+    });
   }
 
   if (consent) {
     consent.addEventListener("change", validateConsent);
   }
+
+  if (form) {
+    form.addEventListener("input", function () {
+      updatePasswordChecklist();
+      checkFormValidity();
+    });
+
+    form.addEventListener("change", function () {
+      updatePasswordChecklist();
+      checkFormValidity();
+    });
+  }
+
+  updatePasswordChecklist();
+  checkFormValidity();
 
   if (modalCancel) {
     modalCancel.addEventListener("click", function () {
@@ -690,7 +861,11 @@ Username: ${username?.value.trim() || "N/A"}
         (!validateState() && stateInput) ||
         (!validateZip() && zipInput) ||
         (!validateUsername() && username) ||
-        (!validatePassword() && password);
+        (!validatePassword() && password) ||
+        (!validateConsent() && consent);
+
+      updatePasswordChecklist();
+      checkFormValidity();
 
       if (firstInvalidField) {
         event.preventDefault();

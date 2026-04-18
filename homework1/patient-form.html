@@ -472,6 +472,22 @@ Description: Submission for homework 1 and 2 containing the registration form fo
             </tr>
 
             <tr>
+              <td></td>
+              <td colspan="3">
+                <div id="message" class="password-checklist">
+                  <h4>Password must contain:</h4>
+                  <p id="letter" class="invalid">A lowercase letter</p>
+                  <p id="capital" class="invalid">
+                    A capital (uppercase) letter
+                  </p>
+                  <p id="number" class="invalid">A number</p>
+                  <p id="length" class="invalid">Minimum 8 characters</p>
+                  <p id="match" class="invalid">Passwords match</p>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
               <td colspan="4">
                 <label class="check" for="consent">
                   <input type="checkbox" id="consent" name="consent" required />
@@ -487,7 +503,7 @@ Description: Submission for homework 1 and 2 containing the registration form fo
 
             <tr>
               <td colspan="4" class="actions-cell">
-                <button class="btn" type="submit">Submit</button>
+                <button class="btn" type="submit" id="submit-btn" disabled>Submit</button>
               </td>
             </tr>
           </table>
